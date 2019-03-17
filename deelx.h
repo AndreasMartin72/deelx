@@ -3981,7 +3981,7 @@ template <class CHART> CHART * CRegexpT <CHART> :: Replace(const CHART * tstring
 			if( distance )
 			{
 				buffer.Push(tstring + result->GetEnd());
-				buffer.Push((const CHART *)(size_t)distance);
+				buffer.Push((const CHART *)(ptrdiff_t)distance);
 
 				toIndex1 -= distance;
 			}
@@ -3993,7 +3993,7 @@ template <class CHART> CHART * CRegexpT <CHART> :: Replace(const CHART * tstring
 			if( distance )
 			{
 				buffer.Push(tstring + lastIndex);
-				buffer.Push((const CHART *)(size_t)distance);
+				buffer.Push((const CHART *)(ptrdiff_t)distance);
 
 				toIndex1 += distance;
 			}
@@ -4051,7 +4051,7 @@ template <class CHART> CHART * CRegexpT <CHART> :: Replace(const CHART * tstring
 			}
 
 			buffer.Push(sub);
-			buffer.Push((const CHART *)(size_t)len);
+			buffer.Push((const CHART *)(ptrdiff_t)len);
 
 			toIndex1 += rightleft ? (-len) : len;
 		}
@@ -4063,7 +4063,7 @@ template <class CHART> CHART * CRegexpT <CHART> :: Replace(const CHART * tstring
 		if(endpos < lastIndex)
 		{
 			buffer.Push(tstring + endpos);
-			buffer.Push((const CHART *)(size_t)(size_t)(lastIndex - endpos));
+			buffer.Push((const CHART *)(ptrdiff_t)(lastIndex - endpos));
 		}
 	}
 	else
@@ -4071,7 +4071,7 @@ template <class CHART> CHART * CRegexpT <CHART> :: Replace(const CHART * tstring
 		if(lastIndex < endpos)
 		{
 			buffer.Push(tstring + lastIndex);
-			buffer.Push((const CHART *)(size_t)(endpos - lastIndex));
+			buffer.Push((const CHART *)(ptrdiff_t)(endpos - lastIndex));
 		}
 	}
 
